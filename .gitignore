@@ -1,0 +1,17 @@
+.gradle
+gradlew
+gradlew.bat
+/build/
+/bin/
+!gradle/wrapper/gradle-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+
+src/main/resources/static/bower_components
+

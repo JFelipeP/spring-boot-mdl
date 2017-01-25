@@ -1,0 +1,31 @@
+# Spring Boot with Thymeleaf and Material Design Lite
+
+This is an example of Spring Boot with Thymeleaf as the view technology styled with Material Design Lite, an implementation of the Material Design concept created by Google.
+ 
+## Requirements
+
+- Java 1.8
+- Gradle
+- NPM
+- Bower
+
+For Node.js/NPM installation visit [https://node.js.org]. 
+
+Install bower:
+ 
+ ```npm install -g bower```
+ 
+## Running
+
+Start the application locally by running:
+ 
+```gradle bootRun```
+
+Or:
+
+```gradle run```
+
+Open [http://localhost:8080] in your browser.
+
+# Other informations
+
