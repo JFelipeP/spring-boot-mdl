@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Countries</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" ></link>
+    <link rel="stylesheet" th:href="@{/bower_components/material-design-lite/material.min.css}" ></link>
+    <script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+	
+</head>
+<body>
+
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
+
+		<div th:replace="layout :: header"></div>
+		<div th:replace="layout :: drawer"></div>
+
+		<main class="mdl-layout__content">
+		<div class="page-content">
+		
+			<h2 class="message" th:text="${message}"></h2>
+			
+			<div class="mdl-grid" >
+				<div class="mdl-cell mdl-cell--12-col">				
+					<!-- content -->	
+					
+					<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+					  <thead>
+					    <tr>
+					      <th class="mdl-data-table__cell--non-numeric">Country</th>
+					      <th class="mdl-data-table__cell--non-numeric">Capital</th>
+					      <th class="mdl-data-table__cell--non-numeric">Language</th>
+					      <th class="mdl-data-table__cell--non-numeric">code</th>
+					      <th>Population</th>					      
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each="country : ${countries}" >
+					      <td th:text="${country.name}" class="mdl-data-table__cell--non-numeric">data</td>
+					      <td th:text="${country.capital}" class="mdl-data-table__cell--non-numeric">data</td>
+					      <td th:text="${country.language}" class="mdl-data-table__cell--non-numeric">data</td>
+					      <td th:text="${country.code}" class="mdl-data-table__cell--non-numeric">data</td>
+					      <td>data</td>					      
+					    </tr>					   
+					  </tbody>
+					</table>	
+					
+							
+				</div> <!-- cell -->				
+			</div> <!-- grid -->		
+			
+			
+		</div>
+		</main>
+
+		<div th:replace="layout :: footer"></div>
+		
+	</div>
+
+</body>
+</html>
