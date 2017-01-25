@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+	<header th:fragment="header" class="mdl-layout__header">
+		<div class="mdl-layout__header-row">
+			<!-- Title -->
+			<span class="mdl-layout-title">App</span>
+			<!-- Add spacer, to align navigation to the right -->
+			<div class="mdl-layout-spacer"></div>
+			<!-- Navigation -->
+			<nav class="mdl-navigation mdl-layout--large-screen-only">
+				<a class="mdl-navigation__link" th:href="@{/}">Home</a> 
+				<a class="mdl-navigation__link" th:href="@{/}">Contacts</a>				
+			</nav>
+		</div>
+	</header>
+
+	<div th:fragment="drawer" class="mdl-layout__drawer">
+		<span class="mdl-layout-title">App</span>
+		<nav class="mdl-navigation">
+			<a class="mdl-navigation__link" th:href="@{/}">Home</a> 
+			<a class="mdl-navigation__link" th:href="@{/}">Contacts</a> 
+		</nav>
+	</div>
+
+	<!-- Content goes here -->
+
+
+	<footer th:fragment="footer" class="mdl-mini-footer">
+		<div class="mdl-mini-footer__left-section">
+			<div class="mdl-logo">Contacts</div>
+			<ul class="mdl-mini-footer__link-list">
+				<li><a href="#">Help</a></li>
+				<li><a href="#">Privacy and Terms</a></li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>
