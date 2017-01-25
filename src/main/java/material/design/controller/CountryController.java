@@ -20,7 +20,7 @@ public class CountryController {
 	
 	@GetMapping
 	public String show(Model model) {
-		List<Country> countries = repository.findAll();
+		List<Country> countries = repository.findAll();		
 		model.addAttribute("countries", countries);
 		return "countries";
 	}

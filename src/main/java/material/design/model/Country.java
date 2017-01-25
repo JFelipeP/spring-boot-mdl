@@ -10,16 +10,16 @@ public class Country {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	private String name;
 	private String capital;
-	private long population;
+	private Long population;
 	private String language;
 	private String code;
 	
 	public Country() {}	
 
-	public Country(String name, String capital, long population, String language, String code) {
+	public Country(String name, String capital, Long population, String language, String code) {
 		this.name = name;
 		this.capital = capital;
 		this.population = population;
@@ -27,11 +27,11 @@ public class Country {
 		this.code = code;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -51,11 +51,11 @@ public class Country {
 		this.capital = capital;
 	}
 
-	public long getPopulation() {
+	public Long getPopulation() {
 		return population;
 	}
 
-	public void setPopulation(long population) {
+	public void setPopulation(Long population) {
 		this.population = population;
 	}
 
