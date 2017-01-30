@@ -5,5 +5,4 @@ create table country(
 	population bigint not null,
 	language varchar(100) not null,
 	code varchar(5) not null
-
 );

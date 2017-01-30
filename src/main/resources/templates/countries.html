@@ -19,12 +19,48 @@
 
 		<main class="mdl-layout__content">
 		<div class="page-content">
+		<!-- content -->
 		
 			<h2 class="message" th:text="${message}"></h2>
 			
+			
 			<div class="mdl-grid" >
-				<div class="mdl-cell mdl-cell--12-col">				
-					<!-- content -->	
+				
+				<div class="mdl-cell mdl-cell--12-col" >
+				
+					<form method="post" th:action="@{/country/save}" th:object="${country}" >
+					
+						  <!-- Simple Textfield -->						
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{name}" class="mdl-textfield__input" type="text">
+						    <label class="mdl-textfield__label" for="sample1">Name...</label>
+						  </div>
+						  
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{capital}" class="mdl-textfield__input" type="text">
+						    <label class="mdl-textfield__label" for="sample1">Capital city...</label>
+						  </div>
+						  
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{population}" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?">
+						    <label class="mdl-textfield__label" for="sample1">Population...</label>
+						  </div>
+						  
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{language}" class="mdl-textfield__input" type="text">
+						    <label class="mdl-textfield__label" for="sample1">Language...</label>
+						  </div>
+						  
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{code}" class="mdl-textfield__input" type="text">
+						    <label class="mdl-textfield__label" for="sample1">Code...</label>
+						  </div>						
+					
+					</form>
+				
+				</div>
+			
+				<div class="mdl-cell mdl-cell--12-col">						
 					
 					<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
 					  <thead>
@@ -45,13 +81,13 @@
 					      <td th:text="${country.population}">data</td>					      
 					    </tr>					   
 					  </tbody>
-					</table>	
+					</table> <!-- table -->
 					
 							
 				</div> <!-- cell -->				
 			</div> <!-- grid -->		
 			
-			
+			<!-- content -->
 		</div>
 		</main>
 
