@@ -2,6 +2,7 @@ package material.design.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,5 +40,22 @@ public class CountryController {
 		repository.delete(id);
 		return "redirect:/country";		
 	}
+	
+	@GetMapping("/update/{id}")
+	public String showUpdate(@PathVariable long id, Model model) {
+		Country existingCountry = repository.findOne(id);
+		model.addAttribute("country", existingCountry);				
+		return "update";
+	}
+	
+	@PostMapping("/update")
+	public String update(Country updates) {	
+		
+		repository.saveAndFlush(updates);
+				
+		return "redirect:/country";
+	}
+	
+	
 
 }

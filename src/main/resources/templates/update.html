@@ -8,8 +8,7 @@
     <link rel="stylesheet" th:href="@{/bower_components/material-design-lite/material.min.css}" ></link>
     <script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-	<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
-	<script th:src="@{/js/script.js}"></script>
+	
 </head>
 <body>
 
@@ -22,32 +21,20 @@
 		<div class="page-content">
 		<!-- content -->
 		
-			<!-- dialog -->
-			
-			  <dialog class="mdl-dialog">
-			    <h4 class="mdl-dialog__title">Allow data deletion?</h4>
-			    <div class="mdl-dialog__content">
-			      <p>
-			        Once the data is deleted it cannot be recovered anymore.
-			      </p>
-			    </div>
-			    <div class="mdl-dialog__actions">
-			      <button type="button" class="mdl-button delete">Delete</button>
-			      <button type="button" class="mdl-button close">Cancel</button>
-			    </div>
-			  </dialog>
-			  <!-- dialog -->
-		
 			<h2 class="message" th:text="${message}"></h2>
 			
 			
 			<div class="mdl-grid" >
 				
-				<div class="mdl-cell mdl-cell--4-col" >
+				<div class="mdl-cell mdl-cell--12-col" >
 				
-					<form method="post" th:action="@{/country/save}" th:object="${country}" >
+					<form method="post" th:action="@{/country/update}" th:object="${country}" >
 					
-						  <!-- Simple Textfield -->						
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{id}" class="mdl-textfield__input" type="text" readonly="readonly" />
+						    <label class="mdl-textfield__label" for="sample1">Id...</label>
+						  </div>
+						  					
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 						    <input th:field="*{name}" class="mdl-textfield__input" type="text" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Name...</label>
@@ -73,9 +60,15 @@
 						    <label class="mdl-textfield__label" for="sample1">Code...</label>
 						  </div>	
 						  
+						  <a th:href="@{/country}">
+						  	<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
+						  		Cancel
+						  	</button>
+						  </a>
+						  
 						  <!-- FAB button with ripple -->
-						  <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-						  	<i class="material-icons">add</i>
+						  <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+						  	<i class="material-icons">edit</i>
 						  </button>
 						  					
 					
@@ -83,38 +76,7 @@
 				
 				</div>
 			
-				<div class="mdl-cell mdl-cell--8-col">						
-					
-					<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
-					  <thead>
-					    <tr>
-					      <th class="mdl-data-table__cell--non-numeric">Country</th>
-					      <th class="mdl-data-table__cell--non-numeric">Capital</th>
-					      <th class="mdl-data-table__cell--non-numeric">Language</th>
-					      <th class="mdl-data-table__cell--non-numeric">code</th>
-					      <th>Population</th>					      
-					    </tr>
-					  </thead>
-					  <tbody>
-					    <tr th:each="country : ${countries}" >
-					      <td class="mdl-data-table__cell--non-numeric"><a th:text="${country.name}" th:href="@{/country/update/{id}(id=${country.id})}" ></a></td>
-					      <td th:text="${country.capital}" class="mdl-data-table__cell--non-numeric">data</td>
-					      <td th:text="${country.language}" class="mdl-data-table__cell--non-numeric">data</td>
-					      <td th:text="${country.code}" class="mdl-data-table__cell--non-numeric">data</td>
-					      <td th:text="${country.population}">data</td>
-					      <td>
-					      	<a th:href="@{/country/delete/{id}(id=${country.id})}" class="show-dialog" th:attr="data-id=${country.id}" >
-					      		<button class="mdl-button mdl-js-button mdl-js-ripple-effect">
-								  	<i class="material-icons">delete</i>
-								</button>
-					      	</a>
-					      </td>				      
-					    </tr>					   
-					  </tbody>
-					</table> <!-- table -->
-					
 							
-				</div> <!-- cell -->				
 			</div> <!-- grid -->		
 			
 			<!-- content -->
