@@ -4,11 +4,12 @@
 	<meta charset="UTF-8"/>
 	<title>Countries</title>
 	
-	<link rel="stylesheet" type="text/css" th:href="@{/style.css}" ></link>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" ></link>
     <link rel="stylesheet" th:href="@{/bower_components/material-design-lite/material.min.css}" ></link>
     <script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-	
+	<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+	<script th:src="@{/js/script.js}"></script>
 </head>
 <body>
 
@@ -21,12 +22,30 @@
 		<div class="page-content">
 		<!-- content -->
 		
+			<!-- dialog -->
+			<!-- 
+			  <button id="show-dialog" type="button" class="mdl-button">Show Dialog</button>
+			-->
+			  <dialog class="mdl-dialog">
+			    <h4 class="mdl-dialog__title">Allow data deletion?</h4>
+			    <div class="mdl-dialog__content">
+			      <p>
+			        Once the data is deleted it cannot be recovered anymore.
+			      </p>
+			    </div>
+			    <div class="mdl-dialog__actions">
+			      <button type="button" class="mdl-button delete">Delete</button>
+			      <button type="button" class="mdl-button close">Cancel</button>
+			    </div>
+			  </dialog>
+			  <!-- dialog -->
+		
 			<h2 class="message" th:text="${message}"></h2>
 			
 			
 			<div class="mdl-grid" >
 				
-				<div class="mdl-cell mdl-cell--12-col" >
+				<div class="mdl-cell mdl-cell--4-col" >
 				
 					<form method="post" th:action="@{/country/save}" th:object="${country}" >
 					
@@ -52,15 +71,21 @@
 						  </div>
 						  
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						    <input th:field="*{code}" class="mdl-textfield__input" type="text" required="required"/>
+						    <input th:field="*{code}" class="mdl-textfield__input" type="text" maxlength="5" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Code...</label>
-						  </div>						
+						  </div>	
+						  
+						  <!-- FAB button with ripple -->
+						  <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+						  	<i class="material-icons">edit</i>
+						  </button>
+						  					
 					
 					</form>
 				
 				</div>
 			
-				<div class="mdl-cell mdl-cell--12-col">						
+				<div class="mdl-cell mdl-cell--8-col">						
 					
 					<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
 					  <thead>
@@ -78,7 +103,14 @@
 					      <td th:text="${country.capital}" class="mdl-data-table__cell--non-numeric">data</td>
 					      <td th:text="${country.language}" class="mdl-data-table__cell--non-numeric">data</td>
 					      <td th:text="${country.code}" class="mdl-data-table__cell--non-numeric">data</td>
-					      <td th:text="${country.population}">data</td>					      
+					      <td th:text="${country.population}">data</td>
+					      <td>
+					      	<a th:href="@{/country/delete/{id}(id=${country.id})}" class="show-dialog" th:attr="data-id=${country.id}" >
+					      		<button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+								  	<i class="material-icons">delete</i>
+								</button>
+					      	</a>
+					      </td>				      
 					    </tr>					   
 					  </tbody>
 					</table> <!-- table -->
