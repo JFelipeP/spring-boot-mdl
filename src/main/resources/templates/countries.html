@@ -32,27 +32,27 @@
 					
 						  <!-- Simple Textfield -->						
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						    <input th:field="*{name}" class="mdl-textfield__input" type="text">
+						    <input th:field="*{name}" class="mdl-textfield__input" type="text" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Name...</label>
 						  </div>
 						  
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						    <input th:field="*{capital}" class="mdl-textfield__input" type="text">
+						    <input th:field="*{capital}" class="mdl-textfield__input" type="text" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Capital city...</label>
 						  </div>
 						  
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						    <input th:field="*{population}" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?">
+						    <input th:field="*{population}" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Population...</label>
 						  </div>
 						  
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						    <input th:field="*{language}" class="mdl-textfield__input" type="text">
+						    <input th:field="*{language}" class="mdl-textfield__input" type="text" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Language...</label>
 						  </div>
 						  
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						    <input th:field="*{code}" class="mdl-textfield__input" type="text">
+						    <input th:field="*{code}" class="mdl-textfield__input" type="text" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Code...</label>
 						  </div>						
 					
