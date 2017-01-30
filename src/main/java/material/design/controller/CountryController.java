@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import material.design.model.Country;
 import material.design.repository.CountryRepository;
@@ -30,14 +31,16 @@ public class CountryController {
 	}
 	
 	@PostMapping("/save")
-	public String save(Country country) {
+	public String save(Country country, RedirectAttributes model) {
 		Country newCountry = repository.saveAndFlush(country);
+		model.addFlashAttribute("toast", "New item saved: " + newCountry.toString());
 		return "redirect:/country";
 	}
 	
 	@GetMapping("/delete/{id}")
-	public String delete(@PathVariable long id) {
+	public String delete(@PathVariable long id, RedirectAttributes model) {
 		repository.delete(id);
+		model.addFlashAttribute("toast", "Item with id = " + id + " was deleted.");
 		return "redirect:/country";		
 	}
 	
@@ -49,9 +52,10 @@ public class CountryController {
 	}
 	
 	@PostMapping("/update")
-	public String update(Country updates) {	
+	public String update(Country updates, RedirectAttributes model) {	
 		
 		repository.saveAndFlush(updates);
+		model.addFlashAttribute("toast", "Item updated");
 				
 		return "redirect:/country";
 	}

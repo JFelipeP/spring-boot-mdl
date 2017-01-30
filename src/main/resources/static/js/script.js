@@ -56,10 +56,39 @@ function createDialog() {
 	});
 	
 
+}  // create dialog
+
+function createToast() {
+	const toast = document.querySelector('#toast');
+	let dataMessage = toast.getAttribute('data-message'); 
+	
+	const data = {
+			message: dataMessage ? dataMessage : 'App Loaded.',
+			timeout: 3000,
+			actionText: 'ok',
+			actionHandler: function(event) {console.log('button ok clicked.')}
+	};
+	
+	if (dataMessage) {
+		toast.MaterialSnackbar.showSnackbar(data);
+	}
+	
+	
 }
 
 
-$(document).ready(() => {
+
+
+
+
+//$(document).ready(function() {
+//	createDialog();
+//    createToast('Toast working!');
+//	
+//});
+
+window.onload = () => {
 	createDialog();
-});
+    createToast();
+}
 

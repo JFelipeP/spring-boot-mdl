@@ -5,9 +5,9 @@
 	<title>Countries</title>
 	
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" ></link>
-    <link rel="stylesheet" th:href="@{/bower_components/material-design-lite/material.min.css}" ></link>
-    <script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>
+    <link rel="stylesheet" th:href="@{/bower_components/material-design-lite/material.min.css}" ></link>    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+	<script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>
 	<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
 	<script th:src="@{/js/script.js}"></script>
 </head>
@@ -37,6 +37,13 @@
 			    </div>
 			  </dialog>
 			  <!-- dialog -->
+			  
+			  <!-- toast -->
+			  <div id="toast" th:attr="data-message=${toast}" class="mdl-js-snackbar mdl-snackbar">
+				  <div class="mdl-snackbar__text"></div>
+				  <button class="mdl-snackbar__action" type="button"></button>
+			   </div>
+			  <!-- toast -->
 		
 			<h2 class="message" th:text="${message}"></h2>
 			
@@ -123,7 +130,7 @@
 
 		<div th:replace="layout :: footer"></div>
 		
-	</div>
+	</div>	
 
 </body>
 </html>
