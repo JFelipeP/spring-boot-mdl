@@ -1,23 +1,18 @@
 package material.design.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
-public class Users {
+public class AdminFormData {
 	
-	@Id	
 	private String username;
 	private String password;
+	private String authority;
 	private boolean enabled;
 	
-	public Users() {}
+	public AdminFormData() {}
 
-	public Users(String username, String password, boolean enabled) {		
+	public AdminFormData(String username, String password, String authority, boolean enabled) {		
 		this.username = username;
 		this.password = password;
+		this.authority = authority;
 		this.enabled = enabled;
 	}
 
@@ -37,6 +32,14 @@ public class Users {
 		this.password = password;
 	}
 
+	public String getAuthority() {
+		return authority;
+	}
+
+	public void setAuthority(String authority) {
+		this.authority = authority;
+	}
+
 	public boolean isEnabled() {
 		return enabled;
 	}
@@ -47,11 +50,12 @@ public class Users {
 
 	@Override
 	public String toString() {
-		return "Users [username=" + username + ", password=" + password + ", enabled=" + enabled + "]";
+		return "AdminFormData [username=" + username + ", password=" + password + ", authority=" + authority
+				+ ", enabled=" + enabled + "]";
 	}
 	
 	
 	
-	
+		
 
 }

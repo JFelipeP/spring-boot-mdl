@@ -77,6 +77,17 @@ form button#logout {
 	cursor: pointer;
 }
 
+/*  select */
+
+select {
+	width: 280px;
+	padding: 10px;
+	background-color: white;
+	color: steelblue;
+	border: 1px solid deeppink;
+	border-radius: 2px;
+}
+
 
 
 
