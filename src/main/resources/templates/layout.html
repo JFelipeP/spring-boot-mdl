@@ -1,4 +1,6 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <body>
 
@@ -12,7 +14,12 @@
 			<nav class="mdl-navigation mdl-layout--large-screen-only">
 				<a class="mdl-navigation__link" th:href="@{/}">Home</a> 
 				<a class="mdl-navigation__link" th:href="@{/country}">Country</a>
-				<a class="mdl-navigation__link" th:href="@{/login}">Login</a>				
+				<a class="mdl-navigation__link" th:href="@{/login}">Login</a>
+				<div sec:authorize="isAuthenticated()">
+					<a class="mdl-navigation__link" href="#">
+						<span sec:authentication="name" >Usuário</span>
+					</a>
+				</div>							
 			</nav>
 		</div>
 	</header>
