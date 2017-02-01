@@ -11,10 +11,10 @@ function createDialog() {
 	const dialog = document.querySelector('dialog');	
 	let dialogs = $('.show-dialog');	
 	
-//	if (!dialog.showModal) {
-//		console.log('dialog element not supported')
-//		dialogPolyfill.registerDialog(dialog);
-//	}
+	if (!dialog.showModal) {
+		console.log('dialog element not supported natively. using polyfill')
+		dialogPolyfill.registerDialog(dialog);
+	}
 	
 	for(a of dialogs) {
 		//console.log(a);	
