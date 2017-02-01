@@ -66,6 +66,18 @@ form input[value="Logout"] {
 	margin: 0 auto;
 }
 
+/*  end login style  */
+
+/* start logout button style */
+
+form button#logout {
+	border: none;
+	color: white;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+
 
 
 
