@@ -85,8 +85,9 @@
 						  </div>	
 						  
 						  <!-- FAB button with ripple -->
-						  <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-						  	<i class="material-icons">add</i>
+						  <button th:switch="${edit}" type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+						  	<i th:case="false" class="material-icons">add</i>
+						  	<i th:case="true" class="material-icons">edit</i>
 						  </button>
 						  					
 					

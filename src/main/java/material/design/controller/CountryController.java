@@ -26,7 +26,8 @@ public class CountryController {
 	public String show(Model model) {			
 		model.addAttribute("country", new Country());
 		List<Country> countries = repository.findAll();
-		model.addAttribute("countries", countries);		
+		model.addAttribute("countries", countries);
+		model.addAttribute("edit", false);
 		return "countries";
 	}
 	
@@ -51,6 +52,8 @@ public class CountryController {
 		
 		List<Country> countries = repository.findAll();
 		model.addAttribute("countries", countries);
+		
+		model.addAttribute("edit", true);
 		return "countries";
 	}
 	
