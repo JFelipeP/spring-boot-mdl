@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8"/>
+	<title>Admin</title>
+	
+	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" ></link>
+    <link rel="stylesheet" th:href="@{/bower_components/material-design-lite/material.min.css}" ></link>    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+	<script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>
+	<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>	
+	<script th:src="@{/bower_components/dialog-polyfill/dialog-polyfill.js}"></script>
+    <link rel="stylesheet" th:href="@{/bower_components/dialog-polyfill/dialog-polyfill.css}" ></link>
+    <script th:src="@{/js/script.js}"></script>
+</head>
+<body>
+
+	<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
+
+		<div th:replace="layout :: header"></div>
+		<div th:replace="layout :: drawer"></div>
+
+		<main class="mdl-layout__content">
+		<div class="page-content">
+		<!-- content -->			 
+		
+			<h2 class="message" th:text="${message}"></h2>
+			
+			
+			<div class="mdl-grid" >
+				
+				<div class="mdl-cell mdl-cell--4-col" >
+				
+					<form method="post" th:action="@{/country/save}" th:object="${user}" >
+												
+						  <!-- Simple Textfield -->						
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{username}" class="mdl-textfield__input" type="text" required="required"/>
+						    <label class="mdl-textfield__label" for="sample1">Username...</label>
+						  </div>
+						  
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{password}" class="mdl-textfield__input" type="text" required="required"/>
+						    <label class="mdl-textfield__label" for="sample1">Password...</label>
+						  </div>
+						  
+						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+						    <input th:field="*{enabled}" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" required="required"/>
+						    <label class="mdl-textfield__label" for="sample1">Enabled...</label>
+						  </div>				  						  
+						  
+						  <!-- FAB button with ripple -->
+						  <button th:switch="${edit}" type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+						  	<i th:case="false" class="material-icons">add</i>
+						  	<i th:case="true" class="material-icons">edit</i>
+						  </button>
+						  					
+					
+					</form>
+				
+				</div>
+			
+				<div class="mdl-cell mdl-cell--8-col">						
+					
+					<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+					  <thead>
+					    <tr>
+					      <th class="mdl-data-table__cell--non-numeric">Username</th>
+					      <th class="mdl-data-table__cell--non-numeric">Password</th>
+					      <th class="mdl-data-table__cell--non-numeric">Enabled</th>					     					      
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each="user : ${users}" >
+					      <td class="mdl-data-table__cell--non-numeric"><a th:text="${user.username}" >data</a></td>
+					      <td th:text="${user.password}" class="mdl-data-table__cell--non-numeric">data</td>
+					      <td th:text="${user.enabled}" class="mdl-data-table__cell--non-numeric">data</td>					      					      			      
+					    </tr>					   
+					  </tbody>
+					</table> <!-- table -->
+					
+							
+				</div> <!-- cell -->				
+			</div> <!-- grid -->		
+			
+			<!-- content -->
+		</div>
+		</main>
+
+		<div th:replace="layout :: footer"></div>
+		
+	</div>	
+
+</body>
+</html>
