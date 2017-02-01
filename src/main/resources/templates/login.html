@@ -26,6 +26,9 @@
         <div th:if="${param.logout}" class="logout-successful">
             You have been logged out.
         </div>
+        <div th:if="${param.denied}" class="login-error">
+            You must have a Admin role.
+        </div>
         <form th:action="@{/login}" method="post" class="login" >
             <div><label> User Name :<input type="text" name="username" placeholder="Type: user" required="required" autofocus="true"/> </label></div><br/>
             <div><label> Password :<input type="password" name="password" placeholder="Type: password" required="required"/> </label></div><br/>

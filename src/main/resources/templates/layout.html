@@ -14,7 +14,7 @@
 			<nav class="mdl-navigation mdl-layout--large-screen-only">
 				<a class="mdl-navigation__link" th:href="@{/}">Home</a> 
 				<a class="mdl-navigation__link" th:href="@{/country}">Country</a>
-				<a class="mdl-navigation__link" th:href="@{/admin}">Admin</a>
+				<a sec:authorize="hasRole('ROLE_ADMIN')" class="mdl-navigation__link" th:href="@{/admin}">Admin</a>
 				<a sec:authorize="!isAuthenticated()" class="mdl-navigation__link" th:href="@{/login}">Login</a>				
 				<a sec:authorize="isAuthenticated()" class="mdl-navigation__link" href="#">
 					Welcome <span sec:authentication="name" >User</span>!
@@ -34,7 +34,7 @@
 		<nav class="mdl-navigation">
 			<a class="mdl-navigation__link" th:href="@{/}">Home</a> 
 			<a class="mdl-navigation__link" th:href="@{/country}">Country</a>
-			<a class="mdl-navigation__link" th:href="@{/admin}">Admin</a>
+			<a sec:authorize="hasRole('ROLE_ADMIN')" class="mdl-navigation__link" th:href="@{/admin}">Admin</a>
 			<a sec:authorize="!isAuthenticated()" class="mdl-navigation__link" th:href="@{/login}">Login</a>			
 			<span sec:authorize="isAuthenticated()" class="mdl-navigation__link" >
 				<form method="post" th:action="@{/logout}">
