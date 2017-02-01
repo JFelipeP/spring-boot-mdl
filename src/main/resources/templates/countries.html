@@ -55,6 +55,8 @@
 				<div class="mdl-cell mdl-cell--4-col" >
 				
 					<form method="post" th:action="@{/country/save}" th:object="${country}" >
+							
+						  <input type="hidden" th:field="*{id}" />
 					
 						  <!-- Simple Textfield -->						
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">

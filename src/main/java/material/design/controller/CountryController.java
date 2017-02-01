@@ -2,7 +2,6 @@ package material.design.controller;
 
 import java.util.List;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,10 +21,11 @@ public class CountryController {
 	@Autowired
 	private CountryRepository repository;
 	
+	
 	@GetMapping
-	public String show(Model model) {
-		List<Country> countries = repository.findAll();	
+	public String show(Model model) {			
 		model.addAttribute("country", new Country());
+		List<Country> countries = repository.findAll();
 		model.addAttribute("countries", countries);		
 		return "countries";
 	}
@@ -33,7 +33,7 @@ public class CountryController {
 	@PostMapping("/save")
 	public String save(Country country, RedirectAttributes model) {
 		Country newCountry = repository.saveAndFlush(country);
-		model.addFlashAttribute("toast", "New item saved: " + newCountry.toString());
+		model.addFlashAttribute("toast", "Item saved: " + newCountry.toString());
 		return "redirect:/country";
 	}
 	
@@ -47,18 +47,14 @@ public class CountryController {
 	@GetMapping("/update/{id}")
 	public String showUpdate(@PathVariable long id, Model model) {
 		Country existingCountry = repository.findOne(id);
-		model.addAttribute("country", existingCountry);				
-		return "update";
+		model.addAttribute("country", existingCountry);
+		
+		List<Country> countries = repository.findAll();
+		model.addAttribute("countries", countries);
+		return "countries";
 	}
 	
-	@PostMapping("/update")
-	public String update(Country updates, RedirectAttributes model) {	
-		
-		repository.saveAndFlush(updates);
-		model.addFlashAttribute("toast", "Item updated");
-				
-		return "redirect:/country";
-	}
+	
 	
 	
 
