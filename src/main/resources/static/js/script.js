@@ -63,16 +63,13 @@ function createToast() {
 	let dataMessage = toast.getAttribute('data-message'); 
 	
 	const data = {
-			message: dataMessage ? dataMessage : 'App Loaded.',
+			message: dataMessage ? dataMessage : 'Não use um canhão para matar um mosquito.',
 			timeout: 3000,
 			actionText: 'ok',
 			actionHandler: function(event) {console.log('button ok clicked.')}
-	};
+	};	
 	
-	if (dataMessage) {
-		toast.MaterialSnackbar.showSnackbar(data);
-	}
-	
+	toast.MaterialSnackbar.showSnackbar(data);	
 	
 }
 
