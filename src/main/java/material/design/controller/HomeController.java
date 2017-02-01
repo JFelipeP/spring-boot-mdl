@@ -14,5 +14,10 @@ public class HomeController {
 		model.addAttribute("message", "Material Design Lite");
 		return "home";
 	}
+	
+	@GetMapping("/login")
+	public String login() {
+		return "login";
+	}
 
 }

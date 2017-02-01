@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Login</title>
+       
+        <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" href="style.css"></link>
+	    <link rel="stylesheet" th:href="@{/bower_components/material-design-lite/material.min.css}" ></link>    
+	    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
+		<script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>
+    </head>
+    <body>
+    
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header ">
+
+		<div th:replace="layout :: header"></div>
+		<div th:replace="layout :: drawer"></div>
+
+		<main class="mdl-layout__content">
+		<div class="page-content">
+		<!-- content -->    
+    
+        <div th:if="${param.error}" class="login-error">
+            Invalid username and password.
+        </div>
+        <div th:if="${param.logout}" class="logout-successful">
+            You have been logged out.
+        </div>
+        <form th:action="@{/login}" method="post" class="login" >
+            <div><label> User Name :<input type="text" name="username" placeholder="Type: user" required="required" autofocus="true"/> </label></div><br/>
+            <div><label> Password :<input type="password" name="password" placeholder="Type: password" required="required"/> </label></div><br/>
+            <div><input type="submit" value="Sign In"/></div>
+        </form>
+        
+        <!-- content -->
+		</div>
+		</main>
+
+		<div th:replace="layout :: footer"></div>
+		
+	</div>	
+    </body>
+</html>
