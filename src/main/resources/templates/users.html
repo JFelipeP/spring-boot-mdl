@@ -7,8 +7,7 @@
 	<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" ></link>
     <link rel="stylesheet" th:href="@{/bower_components/material-design-lite/material.min.css}" ></link>    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
-	<script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>
-	<script th:src="@{/bower_components/jquery/dist/jquery.min.js}"></script>
+	<script th:src="@{/bower_components/material-design-lite/material.min.js}" ></script>	
 </head>
 <body>
 
@@ -21,45 +20,42 @@
 		<div class="page-content">
 		<!-- content -->			 
 		
-			<h2 class="message" th:text="${message}"></h2>
+			
 			
 			
 			<div class="mdl-grid" >
 				
 				<div class="mdl-cell mdl-cell--4-col" >
 				
-					<form method="post" th:action="@{/admin/save}" >
-												
-						  <!-- Simple Textfield -->						
+					<form method="post" th:action="@{/admin/save}" th:object="${adminFormData}" >												
+						  					
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						    <input name="username" class="mdl-textfield__input" type="text" required="required"/>
+						    <input th:field="*{username}" name="username" class="mdl-textfield__input" type="text" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Username...</label>
 						  </div>
 						  
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-						    <input name="password" class="mdl-textfield__input" type="text" required="required"/>
+						    <input th:field="*{password}" name="password" class="mdl-textfield__input" type="text" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Password...</label>
 						  </div>
 						  
 						  <br/>
-						  <select name="authority" required="required">
+						  <select th:field="*{authority}" required="required">
 						  	<option value="ROLE_USER">User</option>
 						  	<option value="ROLE_ADMIN" >Admin</option>
 						  </select>		  
 						  
-						  <br/>
-						  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
-							  <input type="radio" id="option-1" class="mdl-radio__button" name="enabled" value="false" required="required"/>
-							  <span class="mdl-radio__label">Desabled</span>
-						  </label>
-
+						  <br/><br/>
 						  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
-							  <input type="radio" id="option-2" class="mdl-radio__button" name="enabled" value="true"/>
+							  <input th:field="*{enabled}" type="radio" id="option-2" class="mdl-radio__button" name="enabled" value="true" required="required"/>
 							  <span class="mdl-radio__label">Enabled</span>
 						  </label>
+						  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
+							  <input th:field="*{enabled}" type="radio" id="option-1" class="mdl-radio__button" name="enabled" value="false"/>
+							  <span class="mdl-radio__label">Desabled</span>
+						  </label>						  
 																										  			  						  
-						  <br/>
-						  <!-- FAB button with ripple -->
+						  <br/>						  
 						  <button th:switch="${edit}" type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
 						  	<i th:case="false" class="material-icons">add</i>
 						  	<i th:case="true" class="material-icons">edit</i>
@@ -77,14 +73,16 @@
 					    <tr>
 					      <th class="mdl-data-table__cell--non-numeric">Username</th>
 					      <th class="mdl-data-table__cell--non-numeric">Password</th>
-					      <th class="mdl-data-table__cell--non-numeric">Enabled</th>					     					      
+					      <th class="mdl-data-table__cell--non-numeric">Enabled</th>
+					      <th class="mdl-data-table__cell--non-numeric">Authority</th>					      				     					      
 					    </tr>
 					  </thead>
 					  <tbody>
 					    <tr th:each="user : ${users}" >
 					      <td class="mdl-data-table__cell--non-numeric"><a th:text="${user.username}" >data</a></td>
 					      <td th:text="${user.password}" class="mdl-data-table__cell--non-numeric">data</td>
-					      <td th:text="${user.enabled}" class="mdl-data-table__cell--non-numeric">data</td>					      					      			      
+					      <td th:text="${user.enabled}" class="mdl-data-table__cell--non-numeric">data</td>
+					      <td th:text="${user.authority}" class="mdl-data-table__cell--non-numeric">data</td>
 					    </tr>					   
 					  </tbody>
 					</table> <!-- table -->

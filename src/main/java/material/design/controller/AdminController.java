@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import material.design.model.AdminFormData;
+import material.design.model.Authorities;
 import material.design.model.Users;
 import material.design.model.UsersAndAuthorities;
 import material.design.repository.AuthoritiesRepository;
@@ -27,12 +28,10 @@ public class AdminController {
 	private AuthoritiesRepository authoritiesRepository;
 	
 	@GetMapping
-	public String showUsers(Model model) {
-		List<Users> usrs = usersRepository.findAll();
-		model.addAttribute("users", usrs);
+	public String showUsers(Model model) {		
 		model.addAttribute("edit", false);
-		model.addAttribute("message", "admin page");
-		model.addAttribute("adminFormData", new AdminFormData());
+		model.addAttribute("users", usersRepository.JdbcFindUsersWithAuthorities());		
+		model.addAttribute("adminFormData", new AdminFormData(null, null, "ROLE_USER", true));
 		return "users";
 	}
 	
@@ -42,7 +41,7 @@ public class AdminController {
 		Users userToSave = new Users(form.getUsername(), form.getPassword(), form.isEnabled());
 		System.out.println(userToSave);
 		Users usr = usersRepository.saveAndFlush(userToSave);
-		//Authorities auth = authoritiesRepository.saveAndFlush(new Authorities(form.getUsername(), form.getAuthority()));
+		Authorities auth = authoritiesRepository.saveAndFlush(new Authorities(form.getUsername(), form.getAuthority()));
 		return "redirect:/admin";
 	}
 	

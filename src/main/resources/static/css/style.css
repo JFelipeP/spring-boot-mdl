@@ -84,8 +84,10 @@ select {
 	padding: 10px;
 	background-color: white;
 	color: steelblue;
-	border: 1px solid deeppink;
+	border: 1px dashed steelblue;
 	border-radius: 2px;
+	font-size: 20px;
+	text-align: right;
 }
 
 
