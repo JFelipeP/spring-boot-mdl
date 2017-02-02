@@ -27,7 +27,7 @@
 				
 				<div class="mdl-cell mdl-cell--4-col" >
 				
-					<form method="post" th:action="@{/admin/save}" th:object="${adminFormData}" >												
+					<form method="post" th:action="@{(${edit} ? '/admin/update' : '/admin/save')}" th:object="${adminFormData}" >												
 						  					
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 						    <input th:field="*{username}" name="username" class="mdl-textfield__input" type="text" required="required"/>

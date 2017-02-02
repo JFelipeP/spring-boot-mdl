@@ -3,9 +3,7 @@ package material.design.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import material.design.exception.UsernameAlreadyInUseException;
 import material.design.model.AdminFormData;
 import material.design.model.Authorities;
 import material.design.model.Users;
@@ -32,7 +31,7 @@ public class AdminController {
 	
 	@GetMapping
 	public String showUsers(Model model) {		
-		model.addAttribute("edit", false);
+		model.addAttribute("edit", true);
 		model.addAttribute("users", usersRepository.JdbcFindUsersWithAuthorities());		
 		model.addAttribute("adminFormData", new AdminFormData(null, null, "ROLE_USER", true));
 		return "users";
@@ -41,7 +40,12 @@ public class AdminController {
 	@PostMapping("/save")
 	public String save(AdminFormData form) {
 		
-		BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();		
+		Users checkUser = usersRepository.findOne(form.getUsername());
+		if (checkUser != null) {
+			throw new UsernameAlreadyInUseException();
+		}
+		
+		BCryptPasswordEncoder bcrypt = new BCryptPasswordEncoder();	
 		String securePassword = bcrypt.encode(form.getPassword());
 		
 		Users userToSave = new Users(form.getUsername(), securePassword, form.isEnabled());
