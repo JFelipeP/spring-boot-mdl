@@ -28,6 +28,7 @@ public class CountryController {
 		List<Country> countries = repository.findAll();
 		model.addAttribute("countries", countries);
 		model.addAttribute("edit", false);
+		model.addAttribute("message", "Countries List");
 		return "countries";
 	}
 	

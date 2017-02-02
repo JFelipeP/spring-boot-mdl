@@ -90,6 +90,15 @@ select {
 	text-align: right;
 }
 
+.message {
+	text-align: center;
+	background-color: white;
+	color: steelblue;
+	border: 1px solid steelblue;
+	padding: 5px;	
+	font-size: 15pt;
+}
+
 
 
 
