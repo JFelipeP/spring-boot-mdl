@@ -18,16 +18,12 @@
 
 		<main class="mdl-layout__content">
 		<div class="page-content">
-		<!-- content -->			 
-		
-			
-			
+		<!-- content --> 			
 			
 			<div class="mdl-grid" >
-				
-				<div class="mdl-cell mdl-cell--4-col" >
-				
-					<form method="post" th:action="@{(${edit} ? '/admin/update' : '/admin/save')}" th:object="${adminFormData}" >												
+			
+			<div class="mdl-cell mdl-cell--12-col" >				
+					<form method="post" th:action="@{/admin/save}" th:object="${adminFormData}" >												
 						  					
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 						    <input th:field="*{username}" name="username" class="mdl-textfield__input" type="text" required="required"/>
@@ -37,15 +33,13 @@
 						  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
 						    <input th:field="*{password}" name="password" class="mdl-textfield__input" type="text" required="required"/>
 						    <label class="mdl-textfield__label" for="sample1">Password...</label>
-						  </div>
+						  </div>					  
 						  
-						  <br/>
 						  <select th:field="*{authority}" required="required">
 						  	<option value="ROLE_USER">User</option>
 						  	<option value="ROLE_ADMIN" >Admin</option>
-						  </select>		  
+						  </select>
 						  
-						  <br/><br/>
 						  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-2">
 							  <input th:field="*{enabled}" type="radio" id="option-2" class="mdl-radio__button" name="enabled" value="true" required="required"/>
 							  <span class="mdl-radio__label">Enabled</span>
@@ -53,21 +47,15 @@
 						  <label class="mdl-radio mdl-js-radio mdl-js-ripple-effect" for="option-1">
 							  <input th:field="*{enabled}" type="radio" id="option-1" class="mdl-radio__button" name="enabled" value="false"/>
 							  <span class="mdl-radio__label">Desabled</span>
-						  </label>						  
-																										  			  						  
-						  <br/>						  
-						  <button th:switch="${edit}" type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-						  	<i th:case="false" class="material-icons">add</i>
-						  	<i th:case="true" class="material-icons">edit</i>
-						  </button>
-						  					
-					
-					</form>
-				
-				</div>
+						  </label>																	  			  						  
+						  						  
+						  <button type="submit" class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+						  	<i class="material-icons">add</i>						  	
+						  </button>					
+					</form>				
+				</div> <!-- cell -->
 			
-				<div class="mdl-cell mdl-cell--8-col">						
-					
+				<div class="mdl-cell mdl-cell--12-col">					
 					<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
 					  <thead>
 					    <tr>
@@ -79,16 +67,25 @@
 					  </thead>
 					  <tbody>
 					    <tr th:each="user : ${users}" >
-					      <td class="mdl-data-table__cell--non-numeric"><a th:text="${user.username}" >data</a></td>
+					      <td th:text="${user.username}" class="mdl-data-table__cell--non-numeric">data</td>
 					      <td th:text="${user.password}" class="mdl-data-table__cell--non-numeric">data</td>
 					      <td th:text="${user.enabled}" class="mdl-data-table__cell--non-numeric">data</td>
 					      <td th:text="${user.authority}" class="mdl-data-table__cell--non-numeric">data</td>
+					      <td class="mdl-data-table__cell--non-numeric">
+					      	<a th:href="@{/admin/delete/{username}(username=${user.username})}" >
+					      		<button class="mdl-button mdl-js-button mdl-js-ripple-effect">
+								  	<i class="material-icons">delete</i>
+								</button>
+					      	</a>
+					      </td>				    
 					    </tr>					   
 					  </tbody>
-					</table> <!-- table -->
-					
+					</table> <!-- table -->							
+				</div> <!-- cell -->	
+				
+				
+			
 							
-				</div> <!-- cell -->				
 			</div> <!-- grid -->		
 			
 			<!-- content -->
