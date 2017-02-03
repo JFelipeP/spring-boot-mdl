@@ -63,7 +63,7 @@ function createToast() {
 	let dataMessage = toast.getAttribute('data-message'); 
 	
 	const data = {
-			message: dataMessage ? dataMessage : 'Não use um canhão para matar um mosquito.',
+			message: dataMessage ? dataMessage : 'placeholder for toast messages.',
 			timeout: 3000,
 			actionText: 'ok',
 			actionHandler: function(event) {console.log('button ok clicked.')}
