@@ -16,6 +16,9 @@ Install bower:
  ```npm install -g bower```
  
 ## Running
+Install required bower components:
+
+```bower install```
 
 Start the application locally by running:
  
@@ -27,5 +30,11 @@ Or:
 
 Open [http://localhost:8080] in your browser.
 
-# Other informations
+# Login Credentials
+    username: user
+    password: user
+    or
+    username: admin
+    password: admin
+
 

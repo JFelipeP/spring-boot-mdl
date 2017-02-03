@@ -11,7 +11,7 @@ public class HomeController {
 	
 	@GetMapping
 	public String home(Model model) {
-		model.addAttribute("message", "Material Design Lite");
+		model.addAttribute("message", "Material Design Lite");		
 		return "home";
 	}
 	
