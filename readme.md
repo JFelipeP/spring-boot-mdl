@@ -1,6 +1,6 @@
 # Spring Boot with Thymeleaf and Material Design Lite
 
-This is an example of Spring Boot with Thymeleaf as the view technology styled with Material Design Lite, an implementation of the Material Design concept created by Google.
+This is an example of Spring Boot MVC with Thymeleaf as the view technology styled with Material Design Lite, an implementation of the Material Design concept created by Google.
  
 ## Requirements
 
