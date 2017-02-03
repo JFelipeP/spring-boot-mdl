@@ -9,7 +9,7 @@ This is an example of Spring Boot MVC with Thymeleaf as its view technology styl
 - NPM
 - Bower
 
-For Node.js/NPM installation visit [https://node.js.org]. 
+For Node.js/NPM installation visit [https://nodejs.org]. 
 
 Install bower:
  
